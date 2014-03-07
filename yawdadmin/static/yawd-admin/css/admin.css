@@ -1259,7 +1259,7 @@ div#id_password {
 }
 
 .selector-available input, .selector-chosen input {
-	width: 88% !important;
+	width: 85% !important;
 }
 
 .selector-available select, .selector-chosen select {
