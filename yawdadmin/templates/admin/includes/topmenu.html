@@ -59,7 +59,7 @@
 							<li class="dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#">{% if app.icon %}
 									<i class="{{app.icon}} icon-white"></i>
-									{% endif %}&#xa0;{{app.name|app_title}}
+									{% endif %}&#xa0;{{app.texto|app_title}}
 									<b class="caret"></b>
 								</a>
 								<ul class="dropdown-menu">{% for model in app.models %}{% if model.show %}{% if model.separator %}

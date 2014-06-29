@@ -215,7 +215,7 @@ class YawdAdminSite(AdminSite):
         if app_label in self._app_labels:
             del self._app_labels[app_label]
 
-    def register_top_menu_item(self, item, icon_class='', children={}, perms=None):
+    def register_top_menu_item(self, item, icon_class='', children={}, perms=None, texto=None):
         """
         When no children are provided, the ``item`` is expected to be a
         valid application label.
@@ -233,7 +233,8 @@ class YawdAdminSite(AdminSite):
         
         if isinstance(item, basestring) and item in app_labels:
             if not item in self._top_menu:
-                self._top_menu[item] = icon_class
+                texto = texto or item
+                self._top_menu[item] = {'icon': icon_class, 'texto': capfirst(texto)}
         elif item and children:
             for child in children:
                 if not 'name' in child or not 'admin_url' in child:
@@ -299,10 +300,11 @@ class YawdAdminSite(AdminSite):
                         else:
                             app_dict[app_label] = {
                                 'name': app_label.title(),
-                                'icon': self._top_menu[app_label],
+                                'icon': self._top_menu[app_label]['icon'],
                                 'app_url': reverse('admin:app_list', kwargs={'app_label': app_label}, current_app=self.name),
                                 'has_module_perms': has_module_perms,
                                 'models': [model_dict],
+                                'texto': self._top_menu[app_label]['texto'],
                             }
 
         app_list = app_dict.values()
@@ -310,12 +312,13 @@ class YawdAdminSite(AdminSite):
         #register custom menus
         for app in self._top_menu.values():
             if isinstance(app, dict):
-                for child in app['models']:
-                    if not 'show' in child and 'perms' in app and hasattr(app['perms'], '__call__'):
-                        child['show'] = app['perms'](request, child)
-                app_list.append(app)
+                if 'models' in app:
+                    for child in app['models']:
+                        if not 'show' in child and 'perms' in app and hasattr(app['perms'], '__call__'):
+                            child['show'] = app['perms'](request, child)
+                    app_list.append(app)
 
-        app_list.sort(key=lambda x: x['name'])
+        app_list.sort(key=lambda x: x['texto'])
 
         # Sort the models alphabetically within each app.
         for app in app_list:
