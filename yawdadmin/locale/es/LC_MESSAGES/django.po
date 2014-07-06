@@ -722,16 +722,16 @@ msgstr ""
 
 #: templates/admin/includes/topmenu.html:42
 msgid "My Account"
-msgstr ""
+msgstr "Mi cuenta"
 
 #: templates/admin/includes/topmenu.html:45
 msgid "Change Password"
-msgstr ""
+msgstr "Cambiar Password"
 
 #: templates/admin/includes/topmenu.html:48
 #: templates/registration/logged_out.html:6
 msgid "Logout"
-msgstr ""
+msgstr "Cerrar Sesion"
 
 #: templates/admin/includes/topmenu.html:72
 msgid "Options"
