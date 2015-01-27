@@ -69,3 +69,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 ADMIN_SITE_NAME = 'yawd-admin demo site'
 ADMIN_SITE_DESCRIPTION = 'This is a demo website. Please do your best to keep it clean :)'
+
+print "fin settings"

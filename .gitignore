@@ -4,3 +4,6 @@
 /yawd_admin.egg-info
 /.settings
 /build
+/.idea
+atlassian-ide-plugin.xml
+*.log

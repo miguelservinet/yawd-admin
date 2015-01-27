@@ -140,8 +140,9 @@ def valid_analytics_view(request):
 
 
 class MyAccountView(UpdateView):
+    print "myAccountView"
     template_name = 'registration/my_account.html'
-    form_class = ls.ADMIN_USER_MODELFORM
+    #form_class = ls.ADMIN_USER_MODELFORM
     
     def __init__(self, *args, **kwargs):
         super(MyAccountView, self).__init__(*args, **kwargs)

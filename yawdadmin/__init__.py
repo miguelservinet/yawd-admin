@@ -5,6 +5,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.utils.importlib import import_module
 from yawdadmin.sites import YawdAdminSite
 
+default_app_config = "yawdadmin.apps.YawadminAppConfig"
 
 def _get_site():
     yawdadmin_site = getattr(settings, 'ADMIN_SITE', YawdAdminSite)
