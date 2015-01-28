@@ -1,11 +1,9 @@
-__version__ = '0.7.1-rc1'
+__version__ = '0.7.1'
 
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.importlib import import_module
 from yawdadmin.sites import YawdAdminSite
-
-default_app_config = "yawdadmin.apps.YawadminAppConfig"
 
 def _get_site():
     yawdadmin_site = getattr(settings, 'ADMIN_SITE', YawdAdminSite)
