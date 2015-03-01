@@ -33,7 +33,7 @@ ADMIN_USER_MODELFORM = getattr(settings, 'ADMIN_USER_MODELFORM',
 print "Settings de conf"
 
 #load the modelform if it's a string
- if isinstance(ADMIN_USER_MODELFORM, str):
+if isinstance(ADMIN_USER_MODELFORM, str):
      from django.utils.importlib import import_module
      _user_modelform_split = ADMIN_USER_MODELFORM.split('.')
      _user_modelform_module = import_module('.'.join(_user_modelform_split[:-1]))
